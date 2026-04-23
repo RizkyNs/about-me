@@ -97,7 +97,7 @@ export default function Countdown() {
             referrerPolicy="no-referrer"
           />
           <img 
-            src="https://raw.githubusercontent.com/RizkyNs/portfolio-assets/main/avatar.jpg" 
+            src="https://raw.githubusercontent.com/RizkyNs/portfolio-assets/main/avatar2.webp" 
             alt="Random Vibe 4" 
             className="w-full aspect-square object-cover rounded-br-2xl grayscale-[40%] hover:grayscale-0 transition-all duration-300 border border-white/5"
             referrerPolicy="no-referrer"

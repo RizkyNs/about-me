@@ -50,10 +50,10 @@ export default function About() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="w-full max-w-3xl flex flex-col items-center mt-4"
+        className="w-full flex flex-col items-center mt-4"
       >
         <span className="text-xs uppercase tracking-[0.3em] text-blue-400/70 mb-6 font-semibold line-through decoration-blue-500/30">My Favorit Pic</span>
-        <div className="w-full rounded-2xl overflow-hidden border border-white/5 bg-black/50 aspect-video md:aspect-[21/9] relative group">
+        <div className="w-full max-w-md rounded-2xl overflow-hidden border border-white/5 bg-black/50 aspect-square relative group shadow-2xl">
           <img 
             src="https://raw.githubusercontent.com/RizkyNs/portfolio-assets/main/aestethic%20pic.webp" 
             alt="Favorit Aesthetic" 
