@@ -1,19 +1,16 @@
 import { motion } from 'motion/react';
 
 const TAGS = [
-  "Mobile Legends",
-  "Late Night Music",
-  "Design Exploration",
-  "Digital Tinkering",
-  "Thought Provoking Content",
-  "Random Ideas",
-  "Morning Coffee",
-  "Star Gazing"
+  "Dengerin musik",
+  "Main ML",
+  "Ngopi",
+  "Nonton",
+  "Baca"
 ];
 
 export default function HobbySkills() {
   return (
-    <section className="py-24 px-6 max-w-5xl mx-auto text-center">
+    <section className="py-16 md:py-24 px-6 max-w-5xl mx-auto text-center">
       <div className="flex flex-col items-center mb-12">
         <span className="text-xs uppercase tracking-[0.5em] text-sky-blue/50 mb-4">Interests</span>
         <h3 className="text-4xl font-display font-bold">Hobbies & Skills</h3>

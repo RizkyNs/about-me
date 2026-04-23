@@ -18,7 +18,7 @@ export default function App() {
       <main className="relative z-10">
         <Hero />
         
-        <div className="space-y-40 pb-40">
+        <div className="space-y-24 md:space-y-40 pb-24 md:pb-40">
           <About />
           <Favorites />
           <HobbySkills />

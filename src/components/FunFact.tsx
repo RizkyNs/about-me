@@ -17,8 +17,8 @@ export default function FunFact() {
   }, []);
 
   return (
-    <section className="py-24 bg-dark-navy/20 flex flex-col items-center justify-center text-center">
-      <div className="glass-premium p-12 rounded-3xl relative overflow-hidden group">
+    <section className="py-16 md:py-24 bg-dark-navy/20 flex flex-col items-center justify-center text-center px-4">
+      <div className="glass-premium p-8 md:p-12 rounded-3xl relative overflow-hidden group w-full max-w-2xl">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sky-blue/30 to-transparent"></div>
         
         <span className="block text-[10px] uppercase tracking-[1em] text-white/20 mb-8">Daily State</span>

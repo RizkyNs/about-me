@@ -24,8 +24,8 @@ const FAVORITES = [
 
 export default function Favorites() {
   return (
-    <section className="py-24 px-6 max-w-7xl mx-auto">
-      <div className="flex flex-col items-center mb-16 text-center">
+    <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+      <div className="flex flex-col items-center mb-12 md:mb-16 text-center">
         <span className="text-xs uppercase tracking-[0.5em] text-sky-blue/50 mb-4">Preferences</span>
         <h3 className="text-4xl font-display font-bold">The Simple Things</h3>
       </div>
