@@ -254,6 +254,7 @@ export default function BirthdayEffect({ triggerSignal }: BirthdayEffectProps) {
                 onClick={(e) => {
                   e.preventDefault();
                   setShowVideo(true);
+                  window.dispatchEvent(new CustomEvent('video-modal-open', { detail: true }));
                 }}
                 className="group flex items-center gap-3 px-6 py-3 rounded-full bg-slate-900/80 hover:bg-slate-800/90 border border-white/10 hover:border-blue-500/50 backdrop-blur-md shadow-[0_0_20px_rgba(59,130,246,0.15)] hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all duration-300 active:scale-95"
               >

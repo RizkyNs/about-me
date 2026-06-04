@@ -114,13 +114,6 @@ export default function Countdown() {
           ))}
         </div>
 
-        {/* Elegant "tes efek" testing button */}
-        <button
-          onClick={() => setBirthdaySignal(prev => prev + 1)}
-          className="mt-6 px-4 py-1.5 text-[10px] font-mono tracking-widest uppercase text-slate-400 hover:text-blue-300 bg-white/5 hover:bg-blue-500/10 hover:border-blue-500/20 border border-white/5 rounded-full transition-all duration-300 shadow-sm hover:shadow-[0_0_12px_rgba(59,130,246,0.2)] active:scale-95 cursor-pointer"
-        >
-          tes efek
-        </button>
       </div>
 
       {/* Grid Random Pics 1:1 - Windows Style */}

@@ -12,6 +12,21 @@ export default function MusicPlayer() {
   const AUDIO_URL = "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/d1/6b/bf/d16bbf0e-04d9-a43a-3a86-d9c06d6efba7/mzaf_11783011839176776232.plus.aac.p.m4a";
 
   useEffect(() => {
+    const handleVideoModal = (e: Event) => {
+      const customEvent = e as CustomEvent<boolean>;
+      if (customEvent.detail) {
+        setIsExpanded(false);
+        if (audioRef.current && !audioRef.current.paused) {
+          audioRef.current.pause();
+          setIsPlaying(false);
+        }
+      }
+    };
+    window.addEventListener('video-modal-open', handleVideoModal);
+    return () => window.removeEventListener('video-modal-open', handleVideoModal);
+  }, []);
+
+  useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
