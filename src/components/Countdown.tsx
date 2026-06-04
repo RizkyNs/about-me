@@ -1,16 +1,45 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
+import BirthdayEffect from './BirthdayEffect';
+
+function getTargetStatus() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const currentBirthday = new Date(year, 5, 5, 0, 0, 0); // June 5th
+  
+  let isBirthdayMonth = false;
+  const windowEnd = new Date(year, 6, 5, 0, 0, 0); // July 5th (1 month later)
+  
+  // Active state for effects: June 5 to July 5
+  if (now.getTime() >= currentBirthday.getTime() && now.getTime() < windowEnd.getTime()) {
+    isBirthdayMonth = true;
+  }
+
+  // Determine countdown target
+  let targetDate = currentBirthday.getTime();
+  const dayAfterBirthday = new Date(year, 5, 6, 0, 0, 0); // June 6th
+  
+  // If we are past the current year's birthday day (June 6+), target next year
+  if (now.getTime() >= dayAfterBirthday.getTime()) {
+    targetDate = new Date(year + 1, 5, 5, 0, 0, 0).getTime();
+  }
+
+  return { targetDate, isBirthdayMonth };
+}
 
 export default function Countdown() {
-  const targetDate = new Date('2026-06-05T00:00:00').getTime();
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  const [birthdaySignal, setBirthdaySignal] = useState(0);
+  const [hasTriggeredAuto, setHasTriggeredAuto] = useState(false);
+  const isBirthdayRef = useRef(calculateTimeLeft().isBirthdayMonth);
 
   function calculateTimeLeft() {
     const now = new Date().getTime();
+    const { targetDate, isBirthdayMonth } = getTargetStatus();
     const difference = targetDate - now;
 
     if (difference <= 0) {
-      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+      return { days: 0, hours: 0, minutes: 0, seconds: 0, isBirthdayMonth };
     }
 
     return {
@@ -18,16 +47,26 @@ export default function Countdown() {
       hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
       minutes: Math.floor((difference / 1000 / 60) % 60),
       seconds: Math.floor((difference / 1000) % 60),
+      isBirthdayMonth
     };
   }
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
+      const newTime = calculateTimeLeft();
+      setTimeLeft(newTime);
+      
+      // Auto-trigger if midnight rollover occurs while viewing
+      if (newTime.isBirthdayMonth && !isBirthdayRef.current && !hasTriggeredAuto) {
+        setBirthdaySignal(prev => prev + 1);
+        setHasTriggeredAuto(true);
+      }
+      isBirthdayRef.current = newTime.isBirthdayMonth;
+      
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [hasTriggeredAuto]);
 
   const items = [
     { label: 'Days', value: timeLeft.days },
@@ -37,7 +76,16 @@ export default function Countdown() {
   ];
 
   return (
-    <section className="py-12 md:py-24 px-6 max-w-4xl mx-auto flex flex-col items-center gap-16">
+    <motion.section 
+      onViewportEnter={() => {
+        if (isBirthdayRef.current && !hasTriggeredAuto) {
+          setBirthdaySignal(prev => prev + 1);
+          setHasTriggeredAuto(true);
+        }
+      }}
+      viewport={{ once: true, margin: "-100px" }}
+      className="py-12 md:py-24 px-6 max-w-4xl mx-auto flex flex-col items-center gap-16 relative"
+    >
       <div className="w-full flex flex-col items-center">
         <motion.div
            initial={{ opacity: 0 }}
@@ -65,6 +113,14 @@ export default function Countdown() {
             </motion.div>
           ))}
         </div>
+
+        {/* Elegant "tes efek" testing button */}
+        <button
+          onClick={() => setBirthdaySignal(prev => prev + 1)}
+          className="mt-6 px-4 py-1.5 text-[10px] font-mono tracking-widest uppercase text-slate-400 hover:text-blue-300 bg-white/5 hover:bg-blue-500/10 hover:border-blue-500/20 border border-white/5 rounded-full transition-all duration-300 shadow-sm hover:shadow-[0_0_12px_rgba(59,130,246,0.2)] active:scale-95 cursor-pointer"
+        >
+          tes efek
+        </button>
       </div>
 
       {/* Grid Random Pics 1:1 - Windows Style */}
@@ -104,6 +160,9 @@ export default function Countdown() {
           />
         </div>
       </motion.div>
-    </section>
+
+      {/* Birthday Celebration Overlay */}
+      <BirthdayEffect triggerSignal={birthdaySignal} />
+    </motion.section>
   );
 }
