@@ -128,8 +128,8 @@ export default function Countdown() {
         
         <div className="grid grid-cols-2 gap-2 md:gap-3 w-full max-w-[280px] md:max-w-[360px]">
           <img 
-            src="https://raw.githubusercontent.com/RizkyNs/portfolio-assets/main/cool.jpg" 
-            alt="Random Vibe 1" 
+            src="https://raw.githubusercontent.com/RizkyNs/portfolio-assets/main/profile.png" 
+            alt="Random Vibe 3" 
             className="w-full aspect-square object-cover rounded-tl-2xl grayscale-[40%] hover:grayscale-0 transition-all duration-300 border border-white/5"
             referrerPolicy="no-referrer"
           />
@@ -140,8 +140,8 @@ export default function Countdown() {
             referrerPolicy="no-referrer"
           />
           <img 
-            src="https://raw.githubusercontent.com/RizkyNs/portfolio-assets/main/fun2.webp" 
-            alt="Random Vibe 3" 
+            src="https://raw.githubusercontent.com/RizkyNs/portfolio-assets/main/cool.jpg" 
+            alt="Random Vibe 1" 
             className="w-full aspect-square object-cover rounded-bl-2xl grayscale-[40%] hover:grayscale-0 transition-all duration-300 border border-white/5"
             referrerPolicy="no-referrer"
           />

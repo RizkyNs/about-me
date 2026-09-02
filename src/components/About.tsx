@@ -15,7 +15,7 @@ export default function About() {
             <div className="absolute -inset-1 bg-gradient-to-r from-electric-blue/50 to-sky-blue/30 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
             <div className="relative glass rounded-2xl overflow-hidden aspect-square max-w-sm">
               <img
-                src="https://raw.githubusercontent.com/RizkyNs/portfolio-assets/main/profile.png"
+                src="https://github.com/RizkyNs/portfolio-assets/raw/refs/heads/main/twibbonpkkmbith2026-c30ee2f7-ae93-418b-9c76-0dee477bde7f.jpg"
                 alt="Ikky Profile"
                 className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
